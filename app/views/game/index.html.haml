@@ -1,0 +1,20 @@
+%h1#question Pregunta
+#the_list
+%table.style1
+  %tr
+    %td.style2
+      %label#a a
+    %td
+      %input#Button1{onclick: "validate(0)", type: "button", value: "A"}/
+  %tr
+    %td.style2
+      %label#b b
+    %td
+      %input#Button2{onclick: "validate(1)", type: "button", value: "B"}/
+  %tr
+    %td.style2
+      %label#c c
+    %td
+      %input#Button3{onclick: "validate(2)", type: "button", value: "C"}/
+%input#Button4{onclick: "nextQuestion()", type: "button", value: "Start"}/
+

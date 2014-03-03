@@ -1,0 +1,48 @@
+%h1
+  = "for  #{@answer.question.question}"
+
+= form_for @answer do |f|
+  - if @answer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@answer.errors.count, "error")} prohibited this answer from being saved:"
+      %ul
+        - @answer.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :answer
+    = f.text_field :answer
+  .field
+    = f.hidden_field :question_id, :value => @answer.question_id
+  .field
+    = f.label :correct
+    = f.check_box :correct
+  .actions
+    = f.submit 'Save', {:class=>'button'}
+
+%hr
+
+
+- if @answer.question
+
+  %table
+    %tr
+      %th Question
+      %th Answer
+      %th Correct
+      %th Level
+      %th Category
+      %th
+      %th
+      %th
+
+    - @answer.question.answers.each do |answer|
+      %tr
+        %td= answer.question.question
+        %td= answer.answer
+        %td= answer.correct
+        %td= answer.question.level.name
+        %td= answer.question.category.name
+        %td= link_to 'Show', answer
+        %td= link_to 'Edit', edit_answer_path(answer)
+        %td= link_to 'Destroy', answer, :method => :delete, :data => { :confirm => 'Are you sure?' }

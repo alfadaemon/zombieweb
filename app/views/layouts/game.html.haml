@@ -1,0 +1,46 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %title= "ZombieBrain: #{content_for?(:title) ? content_for(:title) :'Home' }"
+    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag    "game"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application"
+    = javascript_include_tag "molecule.min"
+    = csrf_meta_tags
+  %body
+    - if current_user.nil?
+      = render "home/shared/navigation_off"
+    - else
+      = render "home/shared/navigation_on"
+
+    - if notice
+      .row
+        .large-12.columns
+          %p.alert-box.alert{style: "text-align:center"}
+            = notice
+
+    - if alert
+      .row
+        .large-12.columns
+          %p.alert-box.info{style: "text-align:center"}
+            = alert
+
+    /    - if current_user.nil?
+    /      = render "home/shared/navigation_off"
+    /    - else
+    /      = render "home/shared/navigation_on"
+
+    .row
+      .large-12.columns
+        = yield
+
+    / Footer
+    %footer.row
+      .large-12.columns
+        %hr/
+    = javascript_include_tag 'webservice'
+    = javascript_include_tag 'game'
+    = javascript_include_tag 'enginebrain'

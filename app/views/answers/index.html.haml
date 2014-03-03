@@ -1,0 +1,27 @@
+%h1 Listar Respuestas
+
+%table
+  %tr
+    %th Question
+    %th Answer
+    %th Correct
+    %th Level
+    %th Category
+    %th
+    %th
+    %th
+
+  - @answers.each do |answer|
+    %tr
+      %td= answer.question.question
+      %td= answer.answer
+      %td= answer.correct
+      %td= answer.question.level.name
+      %td= answer.question.category.name
+      %td= link_to 'Show', answer
+      %td= link_to 'Edit', edit_answer_path(answer)
+      %td= link_to 'Destroy', answer, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Answer', new_answer_path

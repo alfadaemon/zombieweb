@@ -1,0 +1,28 @@
+.row
+  .small-10.medium-5.columns.small-centered
+    =image_tag "http://placeimg.com/640/480/people"
+.row
+  .small-10.medium-5.columns.small-centered
+    %h2 Sign up
+
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  .row
+    .small-10.medium-5.columns.small-centered
+      = devise_error_messages!
+  .row
+    .small-10.medium-5.columns.small-centered
+      = f.label :email
+      = f.email_field :email, :autofocus => true
+  .row
+    .small-10.medium-5.columns.small-centered
+      = f.label :password
+      = f.password_field :password
+  .row
+    .small-10.medium-5.columns.small-centered
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+  .row
+    .small-10.medium-5.columns.small-centered 
+      = f.submit "Sign up", class: 'button radius'
+      
+  = render "devise/shared/links"

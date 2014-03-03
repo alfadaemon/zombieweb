@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @response.user
+%p
+  %b Answer:
+  = @response.answer
+
+= link_to 'Edit', edit_response_path(@response)
+\|
+= link_to 'Back', responses_path

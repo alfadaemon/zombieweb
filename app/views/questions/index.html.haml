@@ -1,0 +1,23 @@
+%h1 Listar Preguntas
+
+%table
+  %tr
+    %th Pregunta
+    %th Grado
+    %th Materia
+    %th
+    %th
+    %th
+
+  - @questions.each do |question|
+    %tr
+      %td= question.question
+      %td= question.level.name
+      %td= question.category.name
+      %td= link_to 'Show', question
+      %td= link_to 'Edit', edit_question_path(question)
+      %td= link_to 'Destroy', question, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Question', new_question_path

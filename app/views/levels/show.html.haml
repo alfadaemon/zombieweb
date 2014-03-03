@@ -1,0 +1,14 @@
+%h1 Grado
+
+%p#notice= notice
+
+%p
+  %b Name:
+  = @level.name
+%p
+  %b Description:
+  = @level.description
+
+= link_to 'Edit', edit_level_path(@level)
+\|
+= link_to 'Back', levels_path
